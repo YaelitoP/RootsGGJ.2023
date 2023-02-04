@@ -31,7 +31,6 @@ func _enter_state():
 	if DEBUG:
 		print("Entering state: ", state.name)
 	# Give the new state a reference to it's state machine i.e. this one
-	state.lsm = self
 	state.enter()
 
 

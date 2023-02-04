@@ -1,13 +1,13 @@
 extends Node
 class_name baseState
 
-onready var lsm: StateMachine
+onready var machine: StateMachine
 
 func enter():
 	pass
 
 func exit(next_state):
-	lsm.change_to(next_state)
+	machine.change_to(next_state)
 
 ####################################################
 ### Optional handler functions for game loop events.
