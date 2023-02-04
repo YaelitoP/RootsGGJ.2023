@@ -4,12 +4,9 @@ class_name baseState
 onready var lsm: StateMachine
 
 func enter():
-	print(lsm.state.name)
 	pass
 
 func exit(next_state):
-	print(lsm, "exit ", next_state)
-	
 	lsm.change_to(next_state)
 
 ####################################################

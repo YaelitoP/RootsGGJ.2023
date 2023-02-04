@@ -7,7 +7,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func physics_process(_delta: float) -> void:
-	owner.sprite.set_animation("idle")
+	owner.sprite.set_animation("smoke")
 	owner.linear_velocity.x = lerp(owner.linear_velocity.x, 0, 0.5)
 	if Input.is_action_just_pressed("left"):
 		
@@ -17,4 +17,8 @@ func physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("right"):
 		owner.apply_impulse(Vector2.ZERO, Vector2(owner.speed, 0))
 		exit(lsm.moving)
+		
+	if owner.isGrounded and Input.is_action_just_pressed("up"):
+		owner.apply_impulse(Vector2.ZERO, Vector2.UP * owner.jumpForce)
+		exit(lsm.onAir)
 		
