@@ -1,5 +1,9 @@
 extends RigidBody2D
 
+class_name Player
+
+
+onready var sprite: = $playerSprite
 onready var playerMachine: = $states
 onready var idle: = $states/idle
 onready var moving: = $states/moving
@@ -7,7 +11,7 @@ onready var onAir: = $states/onAir
 onready var cinematic: = $states/cinematic
 onready var channeling: = $states/channeling
 
-const MAX_SPEED: = 150
+const MAXSPEED: = 300
 
 
 var speed: = 100
@@ -17,5 +21,10 @@ var isGrounded: bool
 
 
 func _ready() -> void:
-	pass
+	sprite.set_playing(true)
+	
 
+func _integrate_forces(physicsState: Physics2DDirectBodyState) -> void:
+	if playerMachine.state.has_method("integrate_forces"):
+		playerMachine.state.integrate_forces(physicsState)
+	
