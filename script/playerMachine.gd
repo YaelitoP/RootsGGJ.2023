@@ -4,7 +4,7 @@ onready var idle: = "idle"
 onready var moving: = "moving"
 onready var onAir: = "onAir"
 onready var cinematic: = "cinematic"
-onready var channeling: = "channeling"
+onready var using: = "using"
 
 
 
@@ -13,9 +13,9 @@ func _ready() -> void:
 	pass 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !owner.isGrounded and state.name != onAir:
-		print("aca le mando mechia")
 		state.exit(onAir)
-	pass
+	if (Input.is_action_just_pressed("equipR") or Input.is_action_just_pressed("equipL")) and owner.equipments.size() > 0:
+		state.exit(using)
 

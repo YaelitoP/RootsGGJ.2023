@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=2]
+[gd_scene load_steps=136 format=2]
 
 [ext_resource path="res://script/player.gd" type="Script" id=1]
 [ext_resource path="res://script/playerMachine.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://sprites/PjPrincipal/saltarizq.png" type="Texture" id=14]
 [ext_resource path="res://sprites/PjPrincipal/linterna.png" type="Texture" id=15]
 [ext_resource path="res://sprites/PjPrincipal/linternaizq.png" type="Texture" id=16]
+[ext_resource path="res://script/using.gd" type="Script" id=17]
 
 [sub_resource type="PhysicsMaterial" id=2]
 friction = 0.7
@@ -508,42 +509,42 @@ animations = [ {
 }, {
 "frames": [ SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ) ],
 "loop": true,
-"name": "lanter",
+"name": "lantern",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 96 ), SubResource( 97 ), SubResource( 98 ) ],
 "loop": true,
-"name": "lanterDiagDown",
+"name": "lanternDiagDown",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
 "loop": true,
-"name": "lanterDiagDownL",
+"name": "lanternDiagDownL",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 102 ), SubResource( 103 ) ],
 "loop": true,
-"name": "lanterDiagUp",
+"name": "lanternDiagUp",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 104 ), SubResource( 105 ) ],
 "loop": true,
-"name": "lanterDiagUpL",
+"name": "lanternDiagUpL",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ) ],
 "loop": true,
-"name": "lanterL",
+"name": "lanternL",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 116 ), SubResource( 117 ) ],
 "loop": true,
-"name": "lanterUp",
+"name": "lanternUp",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 118 ), SubResource( 119 ) ],
 "loop": true,
-"name": "lanterUpL",
+"name": "lanternUpL",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
@@ -592,13 +593,18 @@ cast_to = Vector2( 0, 20 )
 collision_mask = 2
 collide_with_areas = true
 
+[node name="light" type="RayCast2D" parent="."]
+cast_to = Vector2( 100, 0 )
+collision_mask = 32
+collide_with_areas = true
+
 [node name="playerCam" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="playerSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
-animation = "lanterDiagDownL"
+animation = "lanternDiagDownL"
 
 [node name="states" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -612,6 +618,7 @@ script = ExtResource( 5 )
 [node name="onAir" type="Node" parent="states"]
 script = ExtResource( 8 )
 
-[node name="cinematic" type="Node" parent="states"]
+[node name="using" type="Node" parent="states"]
+script = ExtResource( 17 )
 
-[node name="channeling" type="Node" parent="states"]
+[node name="cinematic" type="Node" parent="states"]

@@ -6,7 +6,7 @@ func _ready() -> void:
 	machine = get_parent()
 	
 
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	owner.target_position = target.global_position
 	
 	if owner.target_position.distance_to(owner.global_position) > owner.TOLERANCE:

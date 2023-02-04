@@ -5,7 +5,7 @@ func _ready() -> void:
 	machine = get_parent()
 	pass 
 
-func process(delta):
+func process(_delta):
 	if owner.motion == 1:
 		
 		owner.sprite.set_animation("jump")

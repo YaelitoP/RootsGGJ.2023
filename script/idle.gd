@@ -13,12 +13,12 @@ func physics_process(_delta: float) -> void:
 	if owner.motion == -1:
 		owner.sprite.set_animation("idleL")
 	owner.linear_velocity.x = lerp(owner.linear_velocity.x, 0, 0.5)
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_pressed("left"):
 		
 		owner.apply_impulse(Vector2.ZERO, Vector2(-owner.speed, 0))
 		exit(machine.moving)
 		
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_pressed("right"):
 		owner.apply_impulse(Vector2.ZERO, Vector2(owner.speed, 0))
 		exit(machine.moving)
 		
