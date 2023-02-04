@@ -6,10 +6,8 @@ func _ready() -> void:
 
 func integrate_forces(_state):
 	if owner.isGrounded and !(Input.is_action_pressed("left") or Input.is_action_pressed("right")):
-		print("no me llaman")
 		exit(lsm.idle)
 	elif owner.isGrounded:
-		print("esto se llama?")
 		exit(lsm.moving)
 	
 	if Input.is_action_pressed("left"):
