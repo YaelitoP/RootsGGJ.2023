@@ -6,12 +6,11 @@ onready var sprite: = $ghostSprite
 onready var coll: = $coll
 onready var attack: = $ghostAttack 
 onready var area: = $playerDetector
-onready var zone: = $zoneDetecthor
 onready var ghostMachine: =$ghostMachine
 onready var idle: = $ghostMachine/ghostIdle
 onready var seek: = $ghostMachine/ghostSeek
 onready var fear: = $ghostMachine/ghostFear
-onready var animtaion: = $ghostAnimation
+onready var animation: = $ghostAnimation
 onready var parent: = get_parent()
 onready var start_position = global_position
 onready var target_position = global_position
@@ -33,3 +32,7 @@ func update_target_position():
 	var boundaries = parent.get_boundaries()
 	var target_vector = Vector2(rand_range(boundaries[0].x, boundaries[0].y), rand_range(boundaries[1].x, boundaries[1].y))
 	target_position = start_position + target_vector
+
+func accelerate_to_point(point):
+	direction = global_position.direction_to(point)
+

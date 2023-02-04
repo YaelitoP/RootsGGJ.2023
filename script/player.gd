@@ -24,7 +24,7 @@ var isGrounded: bool
 func _ready() -> void:
 	sprite.set_playing(true)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if ray.is_colliding():
 		isGrounded = true
