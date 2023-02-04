@@ -18,7 +18,6 @@ func integrate_forces(_state):
 		
 	if owner.isGrounded and Input.is_action_just_pressed("up"):
 		owner.apply_impulse(Vector2.ZERO, Vector2.UP * owner.jumpForce)
-		exit(machine.onAir)
 		
 	if owner.linear_velocity.distance_to(Vector2.ZERO) / owner.MAXSPEED < 0.5 and !(Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 		exit(machine.idle)

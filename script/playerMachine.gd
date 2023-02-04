@@ -13,6 +13,9 @@ func _ready() -> void:
 	pass 
 
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if !owner.isGrounded and state.name != onAir:
+		print("aca le mando mechia")
+		state.exit(onAir)
 	pass
 

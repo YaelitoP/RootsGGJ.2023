@@ -14,9 +14,9 @@ onready var channeling: = $states/channeling
 
 const MAXSPEED: = 300
 
-var jumpForce: = 1000
+var jumpForce: = 900
 var speed: = 100
-var motion: int
+var motion: int = 1
 var isGrounded: bool
 
 
@@ -30,6 +30,7 @@ func _physics_process(_delta: float) -> void:
 		isGrounded = true
 	else:
 		isGrounded = false
+		#yield(get_tree().create_timer(1.0),"timeout")
 
 func _integrate_forces(physicsState: Physics2DDirectBodyState) -> void:
 	if playerMachine.state.has_method("integrate_forces"):
