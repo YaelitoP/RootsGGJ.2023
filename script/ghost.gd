@@ -4,22 +4,25 @@ const MAXSPEED: = 300
 
 onready var sprite: = $ghostSprite
 onready var coll: = $coll
-onready var attack: = $ghostAttack 
+onready var attack: = $attackArea/ghostAttack 
 onready var area: = $playerDetector
 onready var ghostMachine: =$ghostMachine
 onready var idle: = $ghostMachine/ghostIdle
 onready var seek: = $ghostMachine/ghostSeek
 onready var fear: = $ghostMachine/ghostFear
 onready var animation: = $ghostAnimation
+onready var lightDetector: = $lightDetector
+
 onready var parent: = get_parent()
 onready var start_position = global_position
 onready var target_position = global_position
-
+onready var scared: bool
 onready var direction: Vector2
 onready var velocity: Vector2
 onready var acceleration_vector: Vector2
 
 onready var TOLERANCE: = 40
+onready var ATTACK: = 30
 onready var acceleration: = 50
 export var spawn: NodePath
 
@@ -35,4 +38,3 @@ func update_target_position():
 
 func accelerate_to_point(point):
 	direction = global_position.direction_to(point)
-
