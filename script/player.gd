@@ -6,6 +6,7 @@ onready var coll: = $coll
 onready var ray: = $floorRay
 onready var light: = $light
 onready var collLight: = $light/collLight
+onready var hurtBox: = $hurtBox
 onready var sprite: = $playerSprite
 onready var playerMachine: = $states
 onready var idle: = $states/idle
@@ -13,9 +14,9 @@ onready var moving: = $states/moving
 onready var onAir: = $states/onAir
 onready var cinematic: = $states/cinematic
 onready var using: = $states/using
-
-onready var equipments: = ["lantern", "hoe", "glasses"]
-
+onready var timer: = $Timer
+onready var equipments: = ["lantern"]
+onready var hurted: = false
 const MAXSPEED: = 300
 
 var jumpForce: = 900
@@ -25,7 +26,7 @@ var isGrounded: bool
 
 
 
-func _ready() -> void:
+func _ready() -> void: 
 	sprite.set_playing(true)
 
 func _physics_process(_delta: float) -> void:
