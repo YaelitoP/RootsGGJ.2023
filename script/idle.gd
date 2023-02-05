@@ -8,10 +8,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func physics_process(_delta: float) -> void:
+	
 	if owner.motion == 1:
 		owner.sprite.set_animation("idle")
 	if owner.motion == -1:
 		owner.sprite.set_animation("idleL")
+		
 	owner.linear_velocity.x = lerp(owner.linear_velocity.x, 0, 0.5)
 	if Input.is_action_pressed("left"):
 		

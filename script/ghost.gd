@@ -11,10 +11,11 @@ onready var idle: = $ghostMachine/ghostIdle
 onready var seek: = $ghostMachine/ghostSeek
 onready var fear: = $ghostMachine/ghostFear
 onready var animation: = $ghostAnimation
+onready var lightDetector: = $lightDetector
 onready var parent: = get_parent()
 onready var start_position = global_position
 onready var target_position = global_position
-
+onready var scared: bool
 onready var direction: Vector2
 onready var velocity: Vector2
 onready var acceleration_vector: Vector2
@@ -27,7 +28,7 @@ export var spawn: NodePath
 func _ready() -> void:
 	randomize()
 	pass # Replace with function body.
-
+	
 func update_target_position():
 	var boundaries = parent.get_boundaries()
 	var target_vector = Vector2(rand_range(boundaries[0].x, boundaries[0].y), rand_range(boundaries[1].x, boundaries[1].y))
@@ -35,4 +36,3 @@ func update_target_position():
 
 func accelerate_to_point(point):
 	direction = global_position.direction_to(point)
-

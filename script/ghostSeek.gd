@@ -16,9 +16,11 @@ func physics_process(_delta: float) -> void:
 	
 
 func _on_playerDetector_body_entered(body: Node) -> void:
+	print("aca entro en player dector entered ", body.name)
 	exit(machine.seek)
 	target = body
 
 func _on_playerDetector_body_exited(_body: Node) -> void:
+	print("aca entro en player dector exitado ", _body.name)
 	exit(machine.idle)
 	

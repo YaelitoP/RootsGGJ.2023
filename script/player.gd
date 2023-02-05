@@ -5,6 +5,7 @@ onready var mousePo: Vector2 setget , get_mousePo
 onready var coll: = $coll
 onready var ray: = $floorRay
 onready var light: = $light
+onready var collLight: = $light/collLight
 onready var sprite: = $playerSprite
 onready var playerMachine: = $states
 onready var idle: = $states/idle
