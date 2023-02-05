@@ -133,6 +133,7 @@ script = ExtResource( 6 )
 light_mask = 32
 frames = SubResource( 2 )
 animation = "idle"
+frame = 4
 playing = true
 flip_h = true
 

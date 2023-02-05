@@ -15,7 +15,9 @@ onready var onAir: = $states/onAir
 onready var cinematic: = $states/cinematic
 onready var using: = $states/using
 onready var timer: = $Timer
+onready var lightCast: = $light/collLight/bulb
 onready var equipments: = ["lantern"]
+
 onready var hurted: = false
 const MAXSPEED: = 300
 
