@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://script/player.gd" type="Script" id=1]
 [ext_resource path="res://script/playerMachine.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://sprites/PjPrincipal/linterna.png" type="Texture" id=15]
 [ext_resource path="res://sprites/PjPrincipal/linternaizq.png" type="Texture" id=16]
 [ext_resource path="res://script/using.gd" type="Script" id=17]
+[ext_resource path="res://script/cinematic.gd" type="Script" id=18]
 
 [sub_resource type="PhysicsMaterial" id=2]
 rough = true
@@ -615,6 +616,7 @@ animations = [ {
 } ]
 
 [node name="player" type="RigidBody2D" groups=["player"]]
+scale = Vector2( 1.5, 1.5 )
 collision_mask = 10
 mode = 2
 mass = 7.14286
@@ -652,6 +654,7 @@ light_mask = 32
 material = SubResource( 142 )
 
 [node name="bulb" type="Sprite" parent="light/collLight"]
+visible = false
 modulate = Color( 1, 1, 1, 0.203922 )
 light_mask = 32
 position = Vector2( 51.5, 0 )
@@ -665,13 +668,15 @@ energy = 2.5
 range_item_cull_mask = 32
 
 [node name="playerCam" type="Camera2D" parent="."]
-offset = Vector2( 0, -40 )
+offset = Vector2( 0, -70 )
 current = true
-zoom = Vector2( 0.3, 0.3 )
+zoom = Vector2( 0.4, 0.4 )
 
 [node name="playerSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
 animation = "lanternEquip"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="states" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -689,8 +694,10 @@ script = ExtResource( 8 )
 script = ExtResource( 17 )
 
 [node name="cinematic" type="Node" parent="states"]
+script = ExtResource( 18 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="area_entered" from="hurtBox" to="states" method="_on_hurtBox_area_entered"]
+[connection signal="area_entered" from="hurtBox" to="states/cinematic" method="_on_hurtBox_area_entered"]

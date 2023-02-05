@@ -24,36 +24,30 @@ func integrate_forces(_state):
 	
 	
 func physics_process(_delta: float):
-	if Input.is_action_just_pressed("equipL"):
-		equiped = (equiped - 1) % owner.equipments.size()
-		
-		if equiped == allEquipments.LANTERN and owner.motion == 1:
-			owner.sprite.set_animation("lanternEquip")
-		if equiped == allEquipments.LANTERN and owner.motion == -1:
-			owner.sprite.set_animation("lanternEquipL")
+	if !owner.hurted:
+		if Input.is_action_just_pressed("equipL"):
+			equiped = (equiped - 1) % owner.equipments.size()
 			
-	if Input.is_action_just_pressed("equipR"):
-		equiped = (equiped + 1) % owner.equipments.size()
-		
-		if equiped == allEquipments.LANTERN and owner.motion == 1:
-			owner.sprite.set_animation("lanternEquip")
-		if equiped == allEquipments.LANTERN and owner.motion == -1:
-			owner.sprite.set_animation("lanternEquipL")
+			if equiped == allEquipments.LANTERN and owner.motion == 1:
+				owner.sprite.set_animation("lanternEquip")
+			if equiped == allEquipments.LANTERN and owner.motion == -1:
+				owner.sprite.set_animation("lanternEquipL")
+				
+		if Input.is_action_just_pressed("equipR"):
+			equiped = (equiped + 1) % owner.equipments.size()
 			
-	if Input.is_action_just_pressed("unequip"):
-		exit(machine.idle)
-	
-	currAngle = int(owner.light.rotation_degrees) % 360
-	match equiped:
+			if equiped == allEquipments.LANTERN and owner.motion == 1:
+				owner.sprite.set_animation("lanternEquip")
+			if equiped == allEquipments.LANTERN and owner.motion == -1:
+				owner.sprite.set_animation("lanternEquipL")
+				
+		if Input.is_action_just_pressed("unequip"):
+			exit(machine.idle)
 		
-		allEquipments.LANTERN:
-			if Input.is_action_pressed("interact"):
-				owner.collLight.set_polygon([
-					Vector2(8, -8), 
-					Vector2(72, -24),
-					Vector2(72, 24),
-					Vector2(8, 8)
-				])
+		currAngle = int(owner.light.rotation_degrees) % 360
+		match equiped:
+			
+			allEquipments.LANTERN:
 				owner.light.look_at(owner.get_mousePo())
 				if (currAngle > -30 and currAngle < 0) or (currAngle > 330 and currAngle < 360):
 					owner.sprite.set_animation("lanternR")
@@ -71,14 +65,23 @@ func physics_process(_delta: float):
 					owner.sprite.set_animation("lanternDiagDownL")
 				if (currAngle > -360 and currAngle < -280) or (currAngle > 0 and currAngle < 80):
 					owner.sprite.set_animation("lanternDiagDown")
+				
+				if Input.is_action_pressed("interact"):
+					owner.lightCast.visible = true
+					owner.collLight.set_polygon([
+						Vector2(8, -8), 
+						Vector2(72, -24),
+						Vector2(72, 24),
+						Vector2(8, 8)
+					])
+				if Input.is_action_just_released("interact"):
+					owner.collLight.set_polygon([])
+					owner.lightCast.visible = false
+					pass
+				
+			allEquipments.HOE:
+				continue
+			allEquipments.GLASSES:
+				continue
+				
 			
-			if Input.is_action_just_released("interact"):
-				owner.collLight.set_polygon([])
-				pass
-			
-		allEquipments.HOE:
-			continue
-		allEquipments.GLASSES:
-			continue
-			
-		
