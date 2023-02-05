@@ -665,9 +665,9 @@ energy = 2.5
 range_item_cull_mask = 32
 
 [node name="playerCam" type="Camera2D" parent="."]
-offset = Vector2( 0, -40 )
+offset = Vector2( 0, -70 )
 current = true
-zoom = Vector2( 0.3, 0.3 )
+zoom = Vector2( 0.4, 0.4 )
 
 [node name="playerSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )

@@ -21,8 +21,7 @@ func integrate_forces(_state):
 			
 		if owner.linear_velocity.distance_to(Vector2.ZERO) / owner.MAXSPEED < 0.5 and !(Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 			exit(machine.idle)
-		
-
+			
 func process(_delta):
 	if owner.linear_velocity != Vector2.ZERO:
 		owner.sprite.set_speed_scale(owner.linear_velocity.distance_to(Vector2.ZERO) / owner.MAXSPEED)
